@@ -82,3 +82,5 @@ export default function Navigation({ logout }) {
         </div>        
     );
 };
+
+export const MemoizeNavigation = React.memo(Navigation);
