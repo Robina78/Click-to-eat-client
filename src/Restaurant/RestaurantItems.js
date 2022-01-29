@@ -2,7 +2,7 @@ import React from 'react';
 import "./RestaurantItems.css";
 import { LocalPhone, Room } from "@mui/icons-material";
 import { Card } from "react-bootstrap";
-import RestaurantRating from "./RestaurantRating"
+import RestaurantRating, { MemoizedRestaurantRating } from "./RestaurantRating"
 import { Container } from '@mui/material';
 
 
@@ -22,7 +22,7 @@ export default function RestaurantItems({restaurantsData, loading}) {
                     <Card.Title className="card-title"><a href={restaurant.url} target="_blank" rel="noopener noreferrer">{restaurant.name}</a></Card.Title>
                      
                      {restaurant.categories.map(category => (<span className="category" key={category.id}>{category.title}</span>))}                                 
-                     <RestaurantRating restaurant={restaurant} key={restaurant.id}/>                
+                     <MemoizedRestaurantRating restaurant={restaurant} key={restaurant.id}/>                
                     
                     <p><Room  key={restaurant.id} styl={{fontSize:'14'}} />{restaurant.location.display_address[0]} {restaurant.location.display_address[1]} {restaurant.location.display_address[2]}</p>
                     <p><LocalPhone />{restaurant.display_phone} key={restaurant.id}</p>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Card, Container } from "react-bootstrap";
 import UserContext from "../auth/UserContext";
-import RestaurantRating from '../Restaurant/RestaurantRating';
+import RestaurantRating, { MemoizedRestaurantRating } from '../Restaurant/RestaurantRating';
 import { restaurantsImg } from './RestaurantImage';
 import UserApi from '../api/api';
 
@@ -33,7 +33,7 @@ export default function RestaurantCard({restaurant, key}) {
              <Card.Title className='card-title'>{restaurant.name}</Card.Title>
              <p>{restaurant.category}</p>
              
-             <RestaurantRating restaurant={restaurant}/>
+             <MemoizedRestaurantRating restaurant={restaurant}/>
 
              <div>Address: {restaurant.street} {restaurant.city} {restaurant.state} {restaurant.zipCode}</div>
              <div className='d-flext flex-row  mt-4' >

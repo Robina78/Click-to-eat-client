@@ -17,3 +17,5 @@ export default function RestaurantRating({restaurant}) {
         </div>
     );
 }
+
+export const MemoizedRestaurantRating = React.memo(RestaurantRating)

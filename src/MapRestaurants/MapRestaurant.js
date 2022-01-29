@@ -23,7 +23,7 @@ export default function MapRestaurant({restaurantsData, location}) {
                 const results = resp.data.features
                 results.map(location => ( 
                     setViewport({...viewport, latitude:location.center[1],
-                         longitude:location.center[0]})                  
+                        longitude:location.center[0]})                  
                 ))
                 
             } catch(err) {
@@ -31,7 +31,7 @@ export default function MapRestaurant({restaurantsData, location}) {
             }
         }
         fetchData();
-    },[location, viewport])
+    },[location])
    
     const handleMarkerClick = (id, latitude, longitude) => {        
         setCurrentPlaceId(id);
