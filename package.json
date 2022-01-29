@@ -33,6 +33,7 @@
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
+    "react-timeout": "^2.0.1",
     "redux": "^4.1.2",
     "web-vitals": "^1.0.1",
     "webpack-parts": "^2.0.0"
