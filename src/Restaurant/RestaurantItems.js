@@ -2,7 +2,7 @@ import React from 'react';
 import "./RestaurantItems.css";
 import { LocalPhone, Room } from "@mui/icons-material";
 import { Card } from "react-bootstrap";
-import RestaurantRating, { MemoizedRestaurantRating } from "./RestaurantRating"
+import { MemoizedRestaurantRating } from "./RestaurantRating"
 import { Container } from '@mui/material';
 
 

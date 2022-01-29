@@ -5,7 +5,7 @@ import Pagination from './Pagination';
 import HeaderTabs from './HeaderTabs';
 import getYelpData from '../api/YelpApi';
 import { Container, Col, Row} from "react-bootstrap"
-import MapRestaurant from '../MapRestaurants/MapRestaurant';
+import { MemoizedMap } from '../MapRestaurants/MapRestaurant';
 import { useSelector } from 'react-redux';
 
 
@@ -58,7 +58,7 @@ export default function Restaurants() {
                         <Pagination postsPerPage={postsPerPage} totalPosts={restaurantsData.length} paginate={paginate} /> 
                     </Col>
                     <Col className="right">
-                        <MapRestaurant restaurantsData={restaurantsData} location={location}/>
+                        <MemoizedMap restaurantsData={restaurantsData} location={location}/>
                     </Col> 
                 </Row>         
            

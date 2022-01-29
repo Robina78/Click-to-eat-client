@@ -99,3 +99,5 @@ export default function MapRestaurant({restaurantsData, location}) {
         </div>
     )
 }
+
+export const MemoizedMap = React.memo(MapRestaurant)
