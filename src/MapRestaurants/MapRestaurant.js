@@ -20,18 +20,18 @@ export default function MapRestaurant({restaurantsData, location}) {
         const fetchData= async () => {
             try {
                 const resp = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`)
-                 const results = resp.data.features
-                results.map(location => { 
+                const results = resp.data.features
+                results.map(location => ( 
                     setViewport({...viewport, latitude:location.center[1],
                          longitude:location.center[0]})                  
-                })
+                ))
                 
             } catch(err) {
                 console.error(err);
             }
         }
         fetchData();
-    },[location])
+    },[location, viewport])
    
     const handleMarkerClick = (id, latitude, longitude) => {        
         setCurrentPlaceId(id);
@@ -83,8 +83,8 @@ export default function MapRestaurant({restaurantsData, location}) {
                     >                         
 
                     <div className="card-map">
-                        <img src={restaurant.image_url} className='card-Img'/>                        
-                        <h4 className='place'><a href={restaurant.url} target="_blank">{restaurant.name}</a></h4>
+                        <img src={restaurant.image_url} className='card-Img' alt="restaurant"/>                        
+                        <h4 className='place'><a href={restaurant.url} target="_blank" rel="noopener noreferrer">{restaurant.name}</a></h4>
                                             
                         <div className='stars'>
                             <RestaurantRating restaurant={restaurant} key={restaurant.id} />

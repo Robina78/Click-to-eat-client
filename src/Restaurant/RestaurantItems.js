@@ -17,9 +17,9 @@ export default function RestaurantItems({restaurantsData, loading}) {
             {restaurantsData.map(restaurant => (     
               
                 <Card className="card">
-                 <a href={restaurant.url} target="_blank"><Card.Img variant='top' className="card-img-top" src={restaurant.image_url} alt="Restaurant image" /></a>
+                 <a href={restaurant.url} target="_blank" rel="noopener noreferrer"><Card.Img variant='top' className="card-img-top" src={restaurant.image_url} alt="Restaurant image" /></a>
                   <Card.Body className="card-body">
-                    <Card.Title className="card-title"><a href={restaurant.url} target="_blank">{restaurant.name}</a></Card.Title>
+                    <Card.Title className="card-title"><a href={restaurant.url} target="_blank" rel="noopener noreferrer">{restaurant.name}</a></Card.Title>
                      
                      {restaurant.categories.map(category => (<span className="category" key={category.id}>{category.title}</span>))}                                 
                      <RestaurantRating restaurant={restaurant} key={restaurant.id}/>                

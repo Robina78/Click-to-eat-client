@@ -16,7 +16,7 @@ export default function RestaurantCard({restaurant, key}) {
     if(window.confirm('Are you sure to delete this restaurant?')){
       if(currentUser.username === restaurant.username) { 
         try{
-          const res = UserApi.removeRestaurant(restaurant.id)
+          UserApi.removeRestaurant(restaurant.id)
           window.location.reload(false)
         } catch(err) {
           console.log(err)

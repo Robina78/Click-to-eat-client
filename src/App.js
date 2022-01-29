@@ -23,17 +23,14 @@ export default function App() {
   // the value of the token is a dependency for this effect.
 
   useEffect(function loadUserInfo() {
-    // console.debug("App useEffect loadUserInfo", "token=", token);
 
     async function getCurrentUser() {
       if (token) {
         try {
-          let { username } = jwt.decode(token);
-          //put the token on the Api class so it can use it to call the API.
+          let { username } = jwt.decode(token);          
           UserApi.token = token;
           let currentUser = await UserApi.getCurrentUser(username);
-          setCurrentUser(currentUser);
-          // setAddressId(new Set(currentUser.address));
+          setCurrentUser(currentUser);         
         } catch (err) {
           console.error("App loadUserInfo: problem loading", err);
           setCurrentUser(null);

@@ -11,7 +11,7 @@ export default function Pagination({ postsPerPage, totalPosts, paginate }) {
             <ul className="pagination mt-4" >
                 {pageNumbers.map(number => (
                     <li key={number} className="page-item">
-                        <a onClick={() => paginate(number)} className="page-link">
+                        <a href="/#" onClick={() => paginate(number)} className="page-link">
                             {number}
                         </a>          
                     </li>

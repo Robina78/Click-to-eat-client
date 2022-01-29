@@ -13,7 +13,6 @@ import SearchBar from '../SearchBar/SearchBar';
  */
 export default function Navigation({ logout }) {
     const { currentUser } = useContext(UserContext);      
-    // console.debug("Navigation", "currentUser=", currentUser);
 
     function loggedInNav() {
         return (          
@@ -63,8 +62,8 @@ export default function Navigation({ logout }) {
                 <Navbar.Toggle />
                 <Navbar.Collapse>
                     <Nav className='ms-auto'>                                                
-                        <Nav.Link href="login" style={{color: "slateblue", fontSize:"18px", fontWeight:"700"}}>Login</Nav.Link>
-                        <Nav.Link href="signup" style={{color: "slateblue", fontSize:"18px", fontWeight:"700"}}>Signup</Nav.Link>
+                        <Nav.Link className="outLog" href="login">Login</Nav.Link>
+                        <Nav.Link className="outLog" href="signup">Signup</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>          
@@ -74,9 +73,9 @@ export default function Navigation({ logout }) {
 
     return (
         <div className='Navigation'>
-            <Navbar bg="light" expand="lg | md" fixed='top' className='py-0' className="navbar">
+            <Navbar bg="light" expand="lg | md" fixed='top' className='py-0 navbar'>
                 <Navbar.Brand>
-                    <a href="/"><img src={logo} className='logo'/></a>                                        
+                    <a href="/"><img src={logo} className='logo' alt="logo"/></a>                                        
                 </Navbar.Brand>
                 {currentUser ? loggedInNav() : loggedOutNav()}
             </Navbar>

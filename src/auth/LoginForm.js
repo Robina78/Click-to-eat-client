@@ -83,7 +83,7 @@ export default function LoginForm({ login }) {
                         </div>                        
                 </Col>
                 <Col lg={8} md={6} sm={12}>
-                    <img src={loginImg} className="w-100" alt="login Image"/>            
+                    <img src={loginImg} className="w-100" alt="login"/>            
                 </Col> 
             </Row>             
         </Container>
