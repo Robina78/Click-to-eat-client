@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Card, Container } from "react-bootstrap";
 import UserContext from "../auth/UserContext";
-import RestaurantRating, { MemoizedRestaurantRating } from '../Restaurant/RestaurantRating';
+import { MemoizedRestaurantRating } from '../Restaurant/RestaurantRating';
 import { restaurantsImg } from './RestaurantImage';
 import UserApi from '../api/api';
 

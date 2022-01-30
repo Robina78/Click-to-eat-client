@@ -63,7 +63,6 @@ export default function PostRestaurant() {
             let result = await UserApi.createNewRestaurant(newPin);          
             setPins([...pins, result]);
             setNewPlace(null);
-            window.location.reload(false);
         } catch(err) {
             console.error(err);
         }       
@@ -100,7 +99,6 @@ export default function PostRestaurant() {
                 onDblClick={handleAddClick}
                 transitionDuration="200"
                 style={{cursor:"pointer"}}
-                
             >
             {newPlace && (
                 
