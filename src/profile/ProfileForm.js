@@ -47,10 +47,6 @@ export default function ProfileForm({ preview, image}) {
     async function handleSubmit(evt) {
         evt.preventDefault();
 
-        // const formData = new FormData();
-        // formData.append("profilePhoto", preview);
-        
-
         let updatedData = {
             firstName: profileData.firstName,
             lastName: profileData.lastName,

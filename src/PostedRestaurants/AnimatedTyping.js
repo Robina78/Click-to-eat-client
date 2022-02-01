@@ -10,7 +10,7 @@ export default function AnimatedTyping() {
             showCursor: true,
             backDelay:1500,
             backSpeed: 60, 
-            strings: ['Dubble click on map to post new restaurant']
+            strings: ['double click on map to post new restaurant']
         });
     }, [])
     

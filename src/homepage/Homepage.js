@@ -28,7 +28,7 @@ export default function Homepage() {
                    
                     : (                        
                         <div className='wrapper'>                           
-                            <h1>Welcomt to Click To Eat App</h1>
+                            <h1>Welcome to Click To Eat App</h1>
                             <h3><span ref={textRef}></span></h3>                        
                         </div>                              
                     )}                                          
