@@ -54,7 +54,7 @@ export default function Restaurants() {
                 <Row>         
                     <Col className="left">
                         <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} className="mt-5"/>                     
-                        <RestaurantItems restaurantsData={currentPosts} loading={loading}/> 
+                        <RestaurantItems restaurantsData={currentPosts} /> 
                         <Pagination postsPerPage={postsPerPage} totalPosts={restaurantsData.length} paginate={paginate} /> 
                     </Col>
                     <Col className="right">

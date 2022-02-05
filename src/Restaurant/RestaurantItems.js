@@ -7,9 +7,9 @@ import { Container } from '@mui/material';
 
 
 
-export default function RestaurantItems({restaurantsData, loading}) {
-  if(loading) {
-    <h2>Loading...</h2>   
+export default function RestaurantItems({restaurantsData}) {
+  if(!restaurantsData) {
+    <h2>There is not this result</h2>   
   } 
   
     return (
