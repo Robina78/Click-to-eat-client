@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import ReactMapGl, {Marker, Popup} from "react-map-gl";
+import 'mapbox-gl/dist/mapbox-gl.css';
 import {Fastfood} from '@mui/icons-material';
 import UserContext from "../auth/UserContext";
 import { Container } from "react-bootstrap";
@@ -90,8 +91,7 @@ export default function PostRestaurant() {
 
     return (
         <Container fluid>
-            {/* <AnimatedTyping /> */}
-            <h4>doubl click on map to create a new pin for restaurant</h4>
+            <AnimatedTyping />
             <ReactMapGl 
                 {...viewport} 
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}

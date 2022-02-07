@@ -83,4 +83,4 @@ export default function Navigation({ logout }) {
     );
 };
 
-export const MemoizeNavigation = React.memo(Navigation);
+// export const MemoizeNavigation = React.memo(Navigation);

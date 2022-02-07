@@ -5,7 +5,7 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import jwt from "jsonwebtoken";
 import LoadingSpinner from "./common/LoadingSpinner";
 import UserContext from './auth/UserContext';
-import { MemoizeNavigation } from './routes-nav/Navigation';
+import Navigation, { MemoizeNavigation } from './routes-nav/Navigation';
 import PageRoutes from './routes-nav/PageRoutes';
 export const TOKEN_STORAGE_ID = "user-token";
 
@@ -93,7 +93,7 @@ export default function App() {
       <UserContext.Provider 
           value={{ currentUser, setCurrentUser }}>
         <div className="App">
-          <MemoizeNavigation logout={logout} />         
+          <Navigation logout={logout} />         
           <PageRoutes login={login} signup={signup}/>          
         </div> 
       </UserContext.Provider>
