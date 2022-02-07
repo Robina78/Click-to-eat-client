@@ -95,7 +95,7 @@ export default function PostRestaurant() {
             <ReactMapGl 
                 {...viewport} 
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-                mapStyle="mapbox://styles/ruby1517/ckwbo8ddz9f8r15lupx4jshhg"
+                mapStyle="mapbox://styles/mapbox/streets-v11"
                 onViewportChange={viewport => setViewport(viewport)}
                 onDblClick={handleAddClick}
                 transitionDuration="200"
@@ -188,7 +188,7 @@ export default function PostRestaurant() {
                     }}
                     onClick={() => handleMarkerClick(pin.id, pin.latitude, pin.longitude)}                     
                 />
-                </Marker>  
+                </Marker>                
               </>
            ))}                  
 
