@@ -20,12 +20,14 @@ export default function MapRestaurant({restaurantsData, location}) {
     useEffect(() => {
         const fetchData= async () => {
             try {
-                const resp = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`)
+                const resp = await axios.get(`${process.env.REACT_APP_MAPBOX_URL}${location}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`)
                 const results = resp.data.features
+                console.log(results)
                 results.map(location => ( 
                     setViewport({...viewport, latitude:location.center[1],
                         longitude:location.center[0]})                  
                 ))
+                // setViewport({...viewport, latitude:results.center[1], latitude:results.center[0]})
                 
             } catch(err) {
                 console.error(err);
@@ -44,7 +46,7 @@ export default function MapRestaurant({restaurantsData, location}) {
             <ReactMapGl 
                 {...viewport} 
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-                mapStyle="mapbox://styles/ruby1517/ckwbo8ddz9f8r15lupx4jshhg"
+                mapStyle="mapbox://styles/mapbox/streets-v11"
                 onViewportChange={viewport => setViewport(viewport)}                
                 transitionDuration="200"
                 style={{cursor:"pointer"}}
@@ -100,5 +102,3 @@ export default function MapRestaurant({restaurantsData, location}) {
         </div>
     )
 }
-
-export const MemoizedMap = React.memo(MapRestaurant)

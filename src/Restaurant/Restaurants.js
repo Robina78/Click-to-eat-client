@@ -5,7 +5,7 @@ import Pagination from './Pagination';
 import HeaderTabs from './HeaderTabs';
 import getYelpData from '../api/YelpApi';
 import { Container, Col, Row} from "react-bootstrap"
-import { MemoizedMap } from '../MapRestaurants/MapRestaurant';
+import MapRestaurant from '../MapRestaurants/MapRestaurant';
 import { useSelector } from 'react-redux';
 
 
@@ -14,7 +14,7 @@ export default function Restaurants() {
     const location = useSelector(state => state.search.location);
     const [restaurantsData, setRestaurantsData] = useState([]); 
     const [activeTab, setActiveTab] = useState('Delivery');    
-    const [loading] = useState(false)    
+    // const [loading] = useState(false)    
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);      
    
@@ -38,7 +38,7 @@ export default function Restaurants() {
     }, [term, location, activeTab]);
    
     if(!restaurantsData){
-        return (<div/>)
+        return (<div>There is not this result</div>)
       } 
 
     //Get current Post
@@ -50,7 +50,7 @@ export default function Restaurants() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <Container fluid maxWidth="lg" className='restaurant'>           
+        <Container fluid className='restaurant'>           
                 <Row>         
                     <Col className="left">
                         <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} className="mt-5"/>                     
@@ -58,7 +58,7 @@ export default function Restaurants() {
                         <Pagination postsPerPage={postsPerPage} totalPosts={restaurantsData.length} paginate={paginate} /> 
                     </Col>
                     <Col className="right">
-                        <MemoizedMap restaurantsData={restaurantsData} location={location}/>
+                        <MapRestaurant restaurantsData={restaurantsData} location={location}/>
                     </Col> 
                 </Row>         
            
