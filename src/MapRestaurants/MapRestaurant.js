@@ -46,7 +46,7 @@ export default function MapRestaurant({restaurantsData, location}) {
             <ReactMapGl 
                 {...viewport} 
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-                mapStyle="mapbox://styles/mapbox/streets-v11"
+                mapStyle={process.env.REACT_APP_STYLE_URL}
                 onViewportChange={viewport => setViewport(viewport)}                
                 transitionDuration="200"
                 style={{cursor:"pointer"}}

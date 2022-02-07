@@ -95,7 +95,7 @@ export default function PostRestaurant() {
             <ReactMapGl 
                 {...viewport} 
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-                mapStyle="mapbox://styles/mapbox/streets-v11"
+                mapStyle={process.env.REACT_APP_STYLE_URL}
                 onViewportChange={viewport => setViewport(viewport)}
                 onDblClick={handleAddClick}
                 transitionDuration="200"
