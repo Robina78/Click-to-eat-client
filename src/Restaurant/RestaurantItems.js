@@ -13,7 +13,7 @@ export default function RestaurantItems({restaurantsData}) {
   } 
   
     return (
-        <Container className='Items'>         
+        <Container className='Items'>                  
             {restaurantsData.map(restaurant => (     
               
                 <Card className="card">

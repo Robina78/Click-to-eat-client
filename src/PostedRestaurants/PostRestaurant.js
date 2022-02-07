@@ -90,7 +90,8 @@ export default function PostRestaurant() {
 
     return (
         <Container fluid>
-            <AnimatedTyping />
+            {/* <AnimatedTyping /> */}
+            <h4>doubl click on map to create a new pin for restaurant</h4>
             <ReactMapGl 
                 {...viewport} 
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
