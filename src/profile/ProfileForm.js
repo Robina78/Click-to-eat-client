@@ -51,7 +51,8 @@ export default function ProfileForm({ preview, image}) {
             firstName: formData.firstName,
             lastName: formData.lastName,
             email: formData.email,
-            phone: formData.phone
+            phone: formData.phone,
+            profilePhoto: formData.profilePhoto
         };
 
         let username = formData.username;
