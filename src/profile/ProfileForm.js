@@ -31,7 +31,7 @@ export default function ProfileForm({ preview, image}) {
         username: currentUser.username,
         password: "",
     }
-    const [profileData, setProfileData] = useState(INITIAL);
+    const [formData, setFormData] = useState(INITIAL);
     
     const [formErrors, setFormErrors] = useState([]);    
     const[saveConfirmed, setSaveConfirmed] = useState(false); 
@@ -47,27 +47,25 @@ export default function ProfileForm({ preview, image}) {
     async function handleSubmit(evt) {
         evt.preventDefault();
 
-        let updatedData = {
-            firstName: profileData.firstName,
-            lastName: profileData.lastName,
-            email: profileData.email,
-            phone: profileData.phone,            
-            password: profileData.password,
-            profilePhoto: image
+        let profileData = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone
         };
 
-        let username = profileData.username;
+        let username = formData.username;
         let updatedUser;
 
         try {
-            updatedUser = await UserApi.saveProfile(username, updatedData);          
+            updatedUser = await UserApi.saveProfile(username, profileData);          
         } catch(errors) {           
             setFormErrors(errors);
             return;
         }
 
 
-        setProfileData(form => ({ ...form, password: "" }));
+        setFormData(form => ({ ...form, password: currentUser.password }));
         setFormErrors([]);
         setSaveConfirmed(true);
 
@@ -77,7 +75,11 @@ export default function ProfileForm({ preview, image}) {
     
     function handleChange(evt) {
         const { name, value } = evt.target;       
-        setProfileData(data => ({ ...data, [name]: value }));
+        setFormData(form => ({
+            ...form,
+            [name]: value,
+        }));
+        setFormErrors([]);
     }
 
     
@@ -86,18 +88,18 @@ export default function ProfileForm({ preview, image}) {
           <Row>
               <Col className='text-center d-flex flex-column mt-4 p-5' lg={4} md={6} sm={12}>
                 <UploadImage  preview={preview} image={image} />
-                <span className='font-weight-bold mt-2'>{profileData.username}</span>
-                <span className='text-black-50'>{profileData.email}</span>
+                <span className='font-weight-bold mt-2'>{formData.username}</span>
+                <span className='text-black-50'>{formData.email}</span>
               </Col>
               <Col className='p-5'>
-              <h3 className='text-right edit'>Profile Edit</h3>                        
+              <h3 className='text-right edit'>Profile</h3>                        
                     <form onSubmit={handleSubmit}>  
                         <div className="form-group">
                             <label>First Name</label>
                             <input
                                 name="firstName"
                                 className="form-control bordered"
-                                value={profileData.firstName}
+                                value={formData.firstName}
                                 onChange={handleChange}
                             />
                         </div>
@@ -106,7 +108,7 @@ export default function ProfileForm({ preview, image}) {
                             <input
                                 name="lastName"
                                 className="form-control bordered"
-                                value={profileData.lastName}
+                                value={formData.lastName}
                                 onChange={handleChange}
                             />
                         </div>
@@ -115,7 +117,7 @@ export default function ProfileForm({ preview, image}) {
                             <input
                                 name="email"
                                 className="form-control bordered"
-                                value={profileData.email}
+                                value={formData.email}
                                 onChange={handleChange}
                             />
                         </div>
@@ -124,7 +126,7 @@ export default function ProfileForm({ preview, image}) {
                             <input
                                 name="phone"
                                 className="form-control bordered"
-                                value={profileData.phone}
+                                value={formData.phone}
                                 onChange={handleChange}
                             />
                         </div>                                        
@@ -134,7 +136,7 @@ export default function ProfileForm({ preview, image}) {
                                 type="password"
                                 name="password"
                                 className="form-control bordered"
-                                value={profileData.password}
+                                value={formData.password}
                                 onChange={handleChange}
                             />
                         </div>
@@ -155,7 +157,7 @@ export default function ProfileForm({ preview, image}) {
                                 className="btn btn-primary profileBtn"
                                 onClick= {(evt) => {
                                     evt.preventDefault();
-                                    setProfileData(INITIAL);
+                                    setFormData(INITIAL);
                                     navigate("/");
                                 }}
                             > 

@@ -22,12 +22,10 @@ export default function MapRestaurant({restaurantsData, location}) {
             try {
                 const resp = await axios.get(`${process.env.REACT_APP_MAPBOX_URL}${location}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`)
                 const results = resp.data.features
-                console.log(results)
                 results.map(location => ( 
                     setViewport({...viewport, latitude:location.center[1],
                         longitude:location.center[0]})                  
                 ))
-                // setViewport({...viewport, latitude:results.center[1], latitude:results.center[0]})
                 
             } catch(err) {
                 console.error(err);
