@@ -1,21 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./RestaurantItems.css";
 import { LocalPhone, Room } from "@mui/icons-material";
-import { Card } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import { MemoizedRestaurantRating } from "./RestaurantRating"
-import { Container } from '@mui/material';
+
 
 
 
 export default function RestaurantItems({restaurantsData}) {
+  const [activeTab, setActiveTab] = useState('Delivery'); 
   if(!restaurantsData) {
     <h2>There is not this result</h2>   
   } 
   
     return (
-        <Container className='Items'>                  
-            {restaurantsData.map(restaurant => (     
-              
+        <Container className='Items'> 
+        {restaurantsData ? (
+          <div>
+            {restaurantsData.map(restaurant => (    
                 <Card className="card">
                  <a href={restaurant.url} target="_blank" rel="noopener noreferrer"><Card.Img variant='top' className="card-img-top" src={restaurant.image_url} alt="Restaurant image" /></a>
                   <Card.Body className="card-body">
@@ -36,7 +38,12 @@ export default function RestaurantItems({restaurantsData}) {
                     
                   </Card.Body>                  
                 </Card>
-            ))}                                   
+            ))}                          
+          </div>
+        ) : (
+          <p>Sorry, no results were found</p>
+        )}        
+                     
         </Container>
     );
 }

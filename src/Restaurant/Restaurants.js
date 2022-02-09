@@ -25,7 +25,8 @@ export default function Restaurants() {
         const fetchData = async () => {
             try {
                 const rawData = await getYelpData({term:`${term}`, location:`${location}`});
-                const resp = await rawData.json();                                            
+                const resp = await rawData.json(); 
+                                                           
                 setRestaurantsData(
                     resp.businesses.filter((business) => business.transactions.includes(activeTab.toLowerCase()))
                 );                    
