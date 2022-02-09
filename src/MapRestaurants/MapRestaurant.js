@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import ReactMapGl, {Marker, Popup} from "react-map-gl";
+import ReactMapGl, {Marker, Popup, FlyToInterpolator, NavigationControl} from "react-map-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
+ // added the following 6 lines.
+import mapboxgl from 'mapbox-gl';
+
 import {Fastfood } from '@mui/icons-material';
 import axios from "axios";
 import "./MapRestaurant.css"
 import RestaurantRating from '../Restaurant/RestaurantRating';
 
 
-export default function MapRestaurant({restaurantsData, location}) {     
+export default function MapRestaurant({restaurantsData, location}) { 
     const [currentPlaceId, setCurrentPlaceId] = useState(null);     
     const [viewport, setViewport] = useState({
         latitude: 36.6714,
