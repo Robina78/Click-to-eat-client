@@ -1,33 +1,30 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./RestaurantItems.css";
 import { LocalPhone, Room } from "@mui/icons-material";
-import { Card, Container } from "react-bootstrap";
-import { MemoizedRestaurantRating } from "./RestaurantRating"
-
+import { Card } from "react-bootstrap";
+import RestaurantRating from "./RestaurantRating"
+import { Container } from '@mui/material';
 
 
 
 export default function RestaurantItems({restaurantsData}) {
-  const [activeTab, setActiveTab] = useState('Delivery'); 
-  if(!restaurantsData) {
-    <h2>There is not this result</h2>   
-  } 
+  // if(!restaurantsData) {
+  //   <h2>There is not this result</h2>   
+  // } 
   
     return (
-        <Container className='Items'> 
-        {restaurantsData ? (
-          <div>
-            {restaurantsData.map(restaurant => (    
+        <Container className='Items'>                  
+            {restaurantsData.map(restaurant => (  
                 <Card className="card">
                  <a href={restaurant.url} target="_blank" rel="noopener noreferrer"><Card.Img variant='top' className="card-img-top" src={restaurant.image_url} alt="Restaurant image" /></a>
                   <Card.Body className="card-body">
                     <Card.Title className="card-title"><a href={restaurant.url} target="_blank" rel="noopener noreferrer">{restaurant.name}</a></Card.Title>
                      
                      {restaurant.categories.map(category => (<span className="category" key={category.id}>{category.title}</span>))}                                 
-                     <MemoizedRestaurantRating restaurant={restaurant} key={restaurant.id}/>                
+                     <RestaurantRating restaurant={restaurant} key={restaurant.id}/>                
                     
                     <p><Room  key={restaurant.id} styl={{fontSize:'14'}} />{restaurant.location.display_address[0]} {restaurant.location.display_address[1]} {restaurant.location.display_address[2]}</p>
-                    <p><LocalPhone />{restaurant.display_phone} key={restaurant.id}</p>
+                    <p><LocalPhone />{restaurant.display_phone} </p>
 
                     <div className="transaction">                      
                       <p>{restaurant.transactions[0]}</p>
@@ -38,12 +35,8 @@ export default function RestaurantItems({restaurantsData}) {
                     
                   </Card.Body>                  
                 </Card>
-            ))}                          
-          </div>
-        ) : (
-          <p>Sorry, no results were found</p>
-        )}        
-                     
+                
+            ))}                                   
         </Container>
     );
 }

@@ -25,11 +25,10 @@ export default function Restaurants() {
         const fetchData = async () => {
             try {
                 const rawData = await getYelpData({term:`${term}`, location:`${location}`});
-                const resp = await rawData.json(); 
-                                                           
+                const resp = await rawData.json();
                 setRestaurantsData(
                     resp.businesses.filter((business) => business.transactions.includes(activeTab.toLowerCase()))
-                );                    
+                    );                   
                
             } catch(err) {
                 console.error(err);
@@ -38,9 +37,12 @@ export default function Restaurants() {
         fetchData();
     }, [term, location, activeTab]);
    
-    if(!restaurantsData){
-        return (<div>There is not this result</div>)
-      } 
+    // if(!restaurantsData){
+    //     return (<div>There is not this result</div>)
+    //   } else {
+    //     return restaurantsData.filter((restaurant) => restaurant.transactions.includes(activeTab.toLowerCase()))
+    //   }
+    
 
     //Get current Post
     const indexOfLastPost = currentPage * postsPerPage;
@@ -61,8 +63,7 @@ export default function Restaurants() {
                     <Col className="right">
                         <MapRestaurant restaurantsData={restaurantsData} location={location}/>
                     </Col> 
-                </Row>         
-           
+                </Row>     
         </Container>
         
     )
